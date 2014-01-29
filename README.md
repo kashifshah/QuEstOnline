@@ -5,15 +5,21 @@ The original code is changed by adapting / adding number of classes to load the 
 It supports extracting the features sentence by sentence on the fly without building/ reloading the models again.   
 
 In the src folder, the folders that we have added are :
+
 updatedQuEst: where we have built the interface for the 'on the fly' QuEst
+
 ClientIrstLM: where there is the class that replaces the old way of getting the log probability from the lm
+
 ClientQuest: where there are two classes that replaces the old way of calling the feature extractor.. 
 
 The new version of the QuEst is in the folder shef/mt/enes in the class FeatureExtractionSimple.java.
 
 We have modified also other classes, in that case I have left the original class with the suffix Original. We have modified (probably some class more)
+
 FileModel in shef/mt/tools
+
 PPLProcessor in shef/mt/tools
+
 Feature1036 in shef/mt/features/impl/bb
 
 Please note that we have tested the new implementation using the baseline features, but we believe that it can work also with other features.
@@ -49,7 +55,7 @@ compile-lm train.lm tran.blm
 ### e.g commands: ###
 
 
-perl myFaucet.pl -d 9111 java -Xmx1g -XX:+UseConcMarkSweepGC -classpath build/classes:lib/* updatedQuEst.UpdatedQuEstMain  config/config_en-es.properties_corr /Users/kashif/Documents/projects/QuestOnline/output false false
+perl myFaucet.pl -d 9111 java -Xmx1g -XX:+UseConcMarkSweepGC -classpath build/classes:lib/* updatedQuEst.UpdatedQuEstMain  config/config_en-es.properties_corr output false false
 
 last three arguments are ‘output-folder’ debug<true/false> already-tokenize<true/false>  
 
@@ -62,8 +68,11 @@ perl myFaucet.pl -d 9888 compile-lm lm.europarl-nc.en.blm -sentence=yes --eval /
 We would need to change config file as well.. 
 
 spanish.lm.url							= localhost
+
 spanish.lm.port							= 9888
+
 english.lm.url							= localhost
+
 english.lm.port							= 9887
 
 Then make a fake call by: (to run client for extracting features: )

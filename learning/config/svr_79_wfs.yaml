@@ -1,0 +1,86 @@
+# This configuration file follows the YAML format (www.yaml.org)
+# Please note that the indentation used is 4 spaces.
+
+# input
+x_train: /Users/kashif/Documents/projects/quest-master/learning/data/features/wmt2012_qe_baseline/training.qe.baseline.tsv
+y_train: /Users/kashif/Documents/projects/quest-master/learning/data/features/wmt2012_qe_baseline/training.effort
+x_test: /Users/kashif/Documents/projects/quest-master/learning/data/features/wmt2012_qe_baseline/test.qe.baseline.tsv
+y_test: /Users/kashif/Documents/projects/quest-master/learning/data/features/wmt2012_qe_baseline/test.effort
+
+#x_train: ./data/features/wmt2012_qe_baseline/train-23.tsv
+#y_train: ./data/features/wmt2012_qe_baseline/training.effort
+#x_test: ./data/features/wmt2012_qe_baseline/test-23.tsv
+#y_test: ./data/features/wmt2012_qe_baseline/test.effort
+
+
+#x_train: ./data/features/wmt2012_qe_baseline/gb-train-79-features.qe.tsv
+#y_train: ./data/features/wmt2012_qe_baseline/gb_training.effort
+#x_test: ./data/features/wmt2012_qe_baseline/gb-test-79-features.qe.tsv
+#y_test: ./data/features/wmt2012_qe_baseline/test.effort
+
+#x_train: ./data/features/wmt2012_qe_baseline/train-18v2-features.qe.tsv
+#y_train: ./data/features/wmt2012_qe_baseline/training.effort
+#x_test: ./data/features/wmt2012_qe_baseline/test-18v2-features.qe.tsv
+#y_test: ./data/features/wmt2012_qe_baseline/test.effort
+
+
+#x_train: ./data/features/wmt13qe/task1.2/train_50.out
+#y_train: ./data/features/wmt13qe/task1.2/All_rank
+#x_test: ./data/features/wmt13qe/task1.2/test_50.out
+#y_test: ./data/features/wmt13qe/task1.2/rank_1315
+
+
+scale: true
+separator: "\t"
+
+
+#feature_selection:
+#    method: RandomizedLasso
+#    parameters:
+#        cv: 1000
+#        max_iter: 1000
+#        n_resampling: 1000
+#        scaling: 0.8
+#        sample_fraction: 0.9
+
+# feature_selection methods available: RandomizedLasso, ExtraTreesClassifier
+#feature_selection:
+#    method: ExtraTreesClassifier
+#    parameters:
+#        n_estimators: 10
+#        cv: 10
+   #     min_samples_split: 1
+   #     min_samples_leaf: 1
+   #     min_density: 1
+   #     bootstrap: False
+   #     compute_importances: True
+   #     n_jobs: 1
+   #     verbose: True
+
+
+
+
+# learning
+learning:
+    method: SVR
+#    optimize:
+#        #kernel: [linear, rbf, poly]
+#        kernel: [rbf]
+#        # begin, end, number of samples to generate
+#        C: [1, 10, 5]
+#        gamma: [0.0001, 0.1, 5]
+#        epsilon: [0.1, 0.2, 5]
+#        cv: 10
+#        n_jobs: -1
+#        verbose: True
+        
+
+    scorer: [mae, rmse]
+
+    parameters:
+        C: 3.25 #10
+        gamma: 0.0001 #0.0034
+        epsilon: 0.1 # 0.18
+        #degree: 1
+        #probability: True
+        #shrinking: False

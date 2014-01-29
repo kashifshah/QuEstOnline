@@ -1,0 +1,10 @@
+Each folder contains the following files for 1,000 English-Spanish (en-es) and 2,525 French-English (fr-en) translations:
+
+-- source: source sentences in English (WMT news-test2010) or French (WMT news-test2009)
+-- target: baseline Moses translations into Spanish or English
+-- target_postedited: human post-edited version of the translations
+-- effort: human scores in {1,2,3,4}
+-- time: number of seconds to post-edit the sentence (divide it by the number of words in the sentence if you want the average number of seconds to post-edit each word in the sentence)
+-- hter: TER between target and target_postedited
+
+Each file has one sentence / score per line.

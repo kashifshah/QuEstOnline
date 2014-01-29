@@ -1,0 +1,346 @@
+====================================================================
+Quality Estimation features for WMT12 Quality Estimation Shared Task
+eleftherios.avramidis@dfki.de , revised version, September 2012
+====================================================================
+
+    If you use these features, I would appreciate it if you cite:
+
+        Avramidis et. al (2011) \cite{avramidis11:WMTeval} if used the PCFG parsing features
+        Avramidis (2012)  \cite{avramidis:2012:WMT} if used all the rest
+
+    and of course the respective authors of the tools. 
+    See attached file avramidisfeatures_bibtex.bib
+    
+    Please observe license of tools for the use of the data
+
+
+Format description
+==================
+
+The annotation of the training set and test set of the shared task can be found in the files training.tab and test.tab respectively. The files contain one sample per line, with all generated features in tab separated columns. There is an additional version of the files in .csv format, where feature columns are separated with commas. An XML file is also given for convenience.
+
+The quality score provided by the organizers, as well as the original source and target strings are also included in the last two columns
+
+Heading:
+- The first line of the files contains the feature names. 
+- The second line of the files describes the type of the feature, this should be 'string', or 'c' for continuous. In these sets all numerical features are continuous. 
+- The third line has a 'm' for meta-features, i.e. string features that cannot be trained on.
+
+
+
+Features description
+====================
+
+In the tab/comma separated files, the feature names are defined on the first line of each file. In this version, the number of features of the test set is the same with the features of the training set. 
+
+Feature origin: "src_", or "tgt-1_": The feature name prefix, separated with an underscore, defines whether the feature has been produced by analyzing the source, or the target, respectively. Comparison features which take both source and target in consideration (e.g. ratios) have been also appointed to target.
+
+Ratios: For all the features that appear both in source and target, their ratios are also given
+
+Feature family: This is defined by the second part of the feature name, which is surrounded by underscores. The feature set is organized in the following feature families:
+
+Berkeley Parser
+---------------
+Prefixed with "_berkeley_" and "_berkley_": Sentence-level statistics of the PCFG parse for the sentence. It cointains the log likelihood, the confidence of the best parse, the average confidence of all parses and the number of n-best (berkeley-n) trees generated. The best parse in bracketed format is also included for reference purposes or further feature extraction. 
+
+We used Berkeley Parser v1.1 \cite{petrov06:berkeleyParser,Petrov07improvedinference}. English is parsed with the provided grammar. We trained our own Spanish Grammar based on AnCora \cite{TAUL08.35}. 
+
+Parse label-count/ratios
+------------------------
+Named as "_parse-LABEL" and "_parse-LABEL_ratio", these are counts of the basic node labels of the parse tree, as assigned by the Berkeley Parser. English and Spanish variations over labels names have been manually aligned and their ratios are also given. For the meaning of the labels refer to the respective grammars.
+
+languagetool.org
+----------------
+Prefixed with "_lt_" : "LanguageTool Style and Grammar Checker", an Open Source style and grammar proofreading software. For each sentence, we provide 
+_lt_RULE_NAME: the occurences of each matching rule and
+_lt_RULE_NAME_chars: the count of characters affected by each rule
+_lt_errors: overall count of matching rule occurences per sentence
+_lt_errors_chars: overall count of characters affected by matching rule occurences per sentence
+Version 1.6 was used. 
+For the exact description of each rule, look up its RULE_NAME at http://community.languagetool.org/rule/list
+
+Decoding scores
+---------------
+Named as "_d_SCORENAME" or "_d_SCORENAME_[avg|var|std]". This scores have been extracted from the decoding logs provided by the organizers. The overall scores of the best hypothesis are provided as given. For the intermediate scores seen in the generation of the best hypothesis, we provide their average (_avg), variance (_var) and standard deviation (_std). Further description for the meaning of these can be found in the Moses manual or summarized in my shared task paper. \cite{avramidis:2012:WMT}
+
+Length
+------
+Prefixed with "_l_": count of tokens, characters (chars), average character count per token (avgchars)
+
+Language Model
+--------------
+Prefixed with "_lm_": uni-gram, bi-gram, tri-gram and 5-gram probability, as well as count of unknown words (unk). We trained our own language model with SRILM \cite{stolcke02:srilm} based on the monolingual data of WMT11. 
+
+
+Actual feature list & order
+---------------------------
+
+tgt-1_lt_DEL_NOM_SING
+src_lt_ANY_BODY
+tgt-1_lm_prob_ratio
+src_lt_CD_NN
+tgt-1_lt_DET_NOM_MASC
+src_lt_lt_ABSOLUTELY_ESSENTIAL_chars
+src_lt_THREE_NN
+src_lt_EACH_AND_EVERY
+tgt-1_d_J_avg
+tgt-1_parse-CC
+src_lt_lt_COMMA_THAN_chars
+tgt-1_lt_DET_NOM_PLUR
+tgt-1_d_c_var
+src_parse-dot
+tgt-1_d_a5_std
+tgt-1_lt_DET_NOM_FEM
+tgt-1_lm_prob
+src_parse-JJ
+tgt-1_parse-JJ_ratio
+tgt-1_d_r1_avg
+tgt-1_d_r5_std
+tgt-1_d_r4_std
+tgt-1_l_tokens
+src_lt_lt_CD_NN_chars
+tgt-1_d_pC_avg
+tgt-1_d_a1_avg
+tgt-1_lt_lt_NOM_ADJ_MASC_chars
+src_lt_lt_MANY_NN_chars
+src_lt_lt_IT_IS_NO_chars
+src_lt_lt_IN_REGARD_TO_chars
+tgt-1_d_a1_std
+src_lt_EN_A_VS_AN
+tgt-1_lt_UPPERCASE_SENTENCE_START
+tgt-1_lt_DEL_NOM_MASC
+src_lt_WEB_SITE
+tgt-1_d_a4_var
+src_berkley-loglikelihood
+tgt-1_d_J_std
+tgt-1_d_pC_var
+tgt-1_d_r7_var
+tgt-1_lt_lt_EL_NOM_MASC_chars
+tgt-1_d_r3_var
+tgt-1_lm_bi-prob_ratio
+tgt-1_parse-comma_ratio
+tgt-1_lt_Y_E
+tgt-1_d_E_avg
+tgt-1_lt_lt_DET_NOM_MASC_chars
+tgt-1_lt_COMMA_PARENTHESIS_WHITESPACE
+tgt-1_parse-JJ
+src_parse-CC
+tgt-1_lt_lt_EL_FINAL_chars
+src_parse-PP
+src_lt_THIS_NNS
+tgt-1_d_l_var
+src_lt_lt_SMARTPHONE_chars
+tgt-1_lt_NOM_ADJ_FEM
+src_lt_lt_MASS_AGREEMENT_chars
+tgt-1_lt_UNPAIRED_BRACKETS
+tgt-1_d_pC_std
+tgt-1_lt_lt_ESTAR_CLARO_DE_QUE_chars
+tgt-1_d_r4_avg
+tgt-1_meteor_precision
+src_lt_lt_EN_UNPAIRED_BRACKETS_chars
+tgt-1_d_a4_std
+tgt-1_d_a3_avg
+tgt-1_lm_unk_ratio
+src_lt_lt_THREE_NN_chars
+tgt-1_l_chars
+tgt-1_lt_EL_FINAL
+src_lt_lt_SAFE_HAVEN_chars
+tgt-1_d_a4_avg
+tgt-1_lm_tri-prob
+src_lt_lt_COMMA_PARENTHESIS_WHITESPACE_chars
+tgt-1_lt_NOM_ADJ_MASC
+tgt-1_meteor_fragPenalty
+tgt-1_d_c_avg
+tgt-1_lm_unk
+tgt-1_d_a3_var
+src_lt_WORD_REPEAT_RULE
+tgt-1_lt_UPPERCASE_SENTENCE_START_ratio
+src_lt_lt_HAVE_PART_AGREEMENT_chars
+src_lt_IN_REGARD_TO
+tgt-1_parse-PP_ratio
+src_lt_ARTICLE_MISSING
+tgt-1_lt_lt_NOM_ADJ_PLURAL_chars
+src_lt_lt_UPPERCASE_SENTENCE_START_chars
+src_lt_lt_COMP_THAN_chars
+tgt-1_lt_lt_DET_NOM_FEM_chars
+src_l_tokens
+tgt-1_lt_NOM_ADJ_PLURAL
+src_lt_ABSOLUTELY_ESSENTIAL
+src_lt_lt_BEEN_PART_AGREEMENT_chars
+src_lt_MASS_AGREEMENT
+src_berkeley-best-parse-confidence
+tgt-1_d_r3_std
+tgt-1_d_score_w
+tgt-1_d_r7_avg
+tgt-1_parse-VB_ratio
+tgt-1_lt_VERBO_DE_QUE
+tgt-1_lt_DOUBLE_PUNCTUATION
+tgt-1_parse-DT
+tgt-1_berkeley-best-parse-confidence
+tgt-1_lt_errors
+src_lt_errors_chars
+tgt-1_lt_EL_NOM_MASC
+tgt-1_bleu_cross
+tgt-1_d_r6_var
+tgt-1_l_chars_ratio
+src_lt_NEAR_BY
+src_lt_errors
+tgt-1_lm_uni-prob
+src_lt_COMMA_THAN
+src_lt_lt_WEB_SITE_chars
+tgt-1_d_l_avg
+src_lt_HE_VERB_AGR
+tgt-1_d_r4_var
+tgt-1_parse-dot_ratio
+tgt-1_lt_lt_COMMA_PARENTHESIS_WHITESPACE_chars
+tgt-1_lt_DET_NOM_SING
+src_l_avgchars
+tgt-1_parse-comma
+src_lt_lt_EN_QUOTES_chars
+src_lt_COMMA_PARENTHESIS_WHITESPACE
+tgt-1_lt_lt_PP_V_SINGULAR_chars
+tgt-1_d_a2_avg
+tgt-1_berkeley-avg-confidence
+tgt-1_d_a1_var
+tgt-1_d_score_d4
+tgt-1_d_score_d5
+tgt-1_d_score_d6
+tgt-1_d_score_d1
+tgt-1_d_score_d2
+tgt-1_d_score_d3
+tgt-1_d_r2_avg
+tgt-1_lt_lt_DET_NOM_PLUR_chars
+tgt-1_parse-dot
+tgt-1_l_tokens_ratio
+src_lt_lt_ANY_BODY_chars
+tgt-1_d_r6_std
+src_lt_lt_WORD_REPEAT_RULE_chars
+tgt-1_lt_errors_ratio
+tgt-1_d_a5_var
+tgt-1_d_a2_std
+src_lt_MANY_NN
+tgt-1_d_r6_avg
+src_parse-NP
+tgt-1_lt_lt_UPPERCASE_SENTENCE_START_chars
+src_lt_COMP_THAN
+src_lt_lt_NEAR_BY_chars
+src_parse-NN
+tgt-1_d_score_lm
+tgt-1_berkeley-n_ratio
+tgt-1_lt_PP_V_SINGULAR
+src_lt_lt_ARTICLE_MISSING_chars
+tgt-1_d_r1_std
+tgt-1_lt_PP_V_PLURAL
+tgt-1_parse-NP
+tgt-1_l_avgchars_ratio
+tgt-1_d_r5_avg
+tgt-1_parse-NP_ratio
+tgt-1_lt_lt_Y_E_chars
+tgt-1_lt_lt_UPPERCASE_SENTENCE_START_chars_ratio
+src_lm_tri-prob
+tgt-1_meteor_recall
+tgt-1_d_a5_avg
+src_lt_lt_PERIOD_OF_TIME_chars
+tgt-1_lt_errors_chars_ratio
+tgt-1_parse-NN
+src_parse-DT
+tgt-1_parse-CC_ratio
+tgt-1_lm_bi-prob
+src_lt_THERE_RE_MANY
+tgt-1_d_r2_std
+tgt-1_lt_lt_COMMA_PARENTHESIS_WHITESPACE_chars_ratio
+tgt-1_parse-VP
+tgt-1_d_E_var
+src_l_chars
+tgt-1_d_score_d
+src_lt_POSSESIVE_APOSTROPHE
+tgt-1_d_a3_std
+src_lt_lt_THIS_NNS_chars
+tgt-1_lt_lt_WORD_REPEAT_RULE_chars
+src_lm_prob
+tgt-1_parse-VP_ratio
+tgt-1_lt_errors_chars
+tgt-1_parse-DT_ratio
+src_lt_PERIOD_OF_TIME
+tgt-1_d_l_std
+tgt-1_parse-VB
+tgt-1_lt_lt_DEL_NOM_MASC_chars
+tgt-1_d_r1_var
+tgt-1_lt_lt_UNPAIRED_BRACKETS_chars
+tgt-1_berkeley-avg-confidence_ratio
+tgt-1_lt_COMMA_PARENTHESIS_WHITESPACE_ratio
+tgt-1_l_avgchars
+tgt-1_lt_ESTAR_CLARO_DE_QUE
+tgt-1_lt_lt_DOUBLE_PUNCTUATION_chars
+tgt-1_lt_lt_NOM_ADJ_SINGULAR_chars
+tgt-1_lt_WORD_REPEAT_RULE_ratio
+src_lt_BEEN_PART_AGREEMENT
+tgt-1_d_a2_var
+tgt-1_d_c_std
+src_lt_lt_POSSESIVE_APOSTROPHE_chars
+src_lt_EN_UNPAIRED_BRACKETS
+tgt-1_parse-S
+tgt-1_d_r3_avg
+tgt-1_lm_tri-prob_ratio
+src_lt_EN_QUOTES
+tgt-1_parse-NN_ratio
+tgt-1_berkley-loglikelihood
+tgt-1_d_score_tm3
+src_lt_lt_THERE_RE_MANY_chars
+src_parse-comma
+src_lt_lt_EN_A_VS_AN_chars
+tgt-1_d_score_tm1
+src_lt_HAVE_PART_AGREEMENT
+tgt-1_lt_lt_DEL_NOM_SING_chars
+src_lm_uni-prob
+tgt-1_berkeley-best-parse-confidence_ratio
+tgt-1_berkeley-n
+src_lt_lt_EACH_AND_EVERY_chars
+tgt-1_lt_WORD_REPEAT_RULE
+src_lt_SMARTPHONE
+src_lt_UPPERCASE_SENTENCE_START
+tgt-1_lm_uni-prob_ratio
+tgt-1_d_S_std
+tgt-1_d_r7_std
+src_berkeley-avg-confidence
+tgt-1_lt_lt_VERBO_DE_QUE_chars
+tgt-1_lt_NOM_ADJ_SINGULAR
+tgt-1_d_S_avg
+src_lm_bi-prob
+src_lt_IT_IS_NO
+src_parse-VP
+tgt-1_parse-PP
+tgt-1_lt_lt_PP_V_PLURAL_chars
+tgt-1_parse-S_ratio
+src_berkeley-n
+tgt-1_d_E_std
+tgt-1_d_r2_var
+tgt-1_d_r5_var
+src_lt_SAFE_HAVEN
+tgt-1_berkley-loglikelihood_ratio
+tgt-1_lt_lt_DET_NOM_SING_chars
+tgt-1_lt_lt_WORD_REPEAT_RULE_chars_ratio
+tgt-1_d_S_var
+tgt-1_d_score_tm2
+src_parse-S
+tgt-1_d_J_var
+src_parse-VB
+tgt-1_lt_lt_NOM_ADJ_FEM_chars
+tgt-1_d_score_tm4
+tgt-1_d_score_tm5
+src_lt_lt_HE_VERB_AGR_chars
+src_lm_unk
+tgt-1_meteor_score
+
+
+Style and grammar features could not be included due to licensing issues. If you need further information please contact the authors.
+
+The parallelization of the pipeline was organized with Ruffus \cite{Goodstadt:2010:RUF:1883328.1883347}
+
+Aknowledgments: 
+Thanks to Lukas Poustka for his engineering support on several parts of the annotation process.
+
+
+
+
+

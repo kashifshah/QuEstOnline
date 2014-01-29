@@ -1,0 +1,98 @@
+We report a total of 497 features. Many of them are intentionally
+repeated or are non-informative to test the efficiency of the feature
+selection techniques presented in the competition. The following table
+contains the different types of features, the number of features of
+each type, and the positions in which they appear in the csv file:
+
+Feature type         total features   feature positions in csv
+------------------------------------------------------
+sentenceLengthFeats      ( 3 )                 1 -   3
+  - source and target lengths, and ratio
+
+sourceNgramFreqFeats    ( 24 )                 4 -  27
+  - number of 1,2,3 and 4-grams in each quartile
+  - percentage of previously unseen 1,2,3 and 4-grams
+  - average count of 1,2,3 and 4-grams
+
+searchGraphFeats        ( 19 )                28 -  46
+  - percentage of dead ends in the search graph
+  - number of phrases, number of options per source phrase, 
+    and average target phrase size for source phrase of 
+    sizes 1 to 6
+
+ibm1Feats                ( 6 )                47 -  52
+  - number of previously unseen words
+  - average word scores
+  - Number of words in each quartile
+
+srclmFeats              ( 15 )                53 -  67
+  - source log-probability, perplexity-1, and perplexity-2
+    given by srilm language model of order 1 to 5
+
+trglmFeats              ( 15 )                67 -  82
+  - target log-probability, perplexity-1, and perplexity-2
+    given by srilm language model of order 1 to 5
+
+nbelmFeats              ( 15 )                83 -  97
+  - target log-probability, perplexity-1, and perplexity-2
+    given by srilm language model of order 1 to 5 computed on
+    the n-best list
+
+1-wcNgFeats             ( 72 )                98 - 169
+  - First, we compute word confidence scores according to several 
+    criteria: 4 alignment criteria and 3 scoring criteria, for a 
+    total of 12 scores per word. Then, we report the number of 
+    previously unseen words (score equal to 0), average word score,
+    and number of words in each quartile. See:
+     Nicola Ueffing, Klaus Macherey, and Hermann Ney. 2003. 
+     Confidence measures for statistical machine translation. 
+     In Proceedings of the MT Summit IX, pages 394–401. Springer-Verlag.
+    and
+     Alberto Sanchis, Alfons Juan, and Enrique Vidal. 2007.
+     Estimation of confidence measures for machine translation. 
+     In Proceedings of the MT Summit XI. Springer-Verlag.
+
+2-wcNgFeats             ( 72 )               170 - 241
+  - The same for 2-grams
+
+3-wcNgFeats             ( 72 )               242 - 313
+  - The same for 3-grams
+
+4-wcNgFeats             ( 72 )               314 - 385
+  - The same for 4-grams
+
+1-nbNgFeats             ( 18 )               386 - 403
+  - We compute a new correctness score for each word, taking as 
+    features several wcNgFeats. The score is given by a smoothed
+    naive Bayes classifier. We computed one classifier for each
+    alignment criteria:
+     Alberto Sanchis, Alfons Juan, and Enrique Vidal. 2007.
+     Estimation of confidence measures for machine translation. 
+     In Proceedings of the MT Summit XI. Springer-Verlag.
+    From the word scores given by each classifier
+    we report the average score, the percentage of correct words 
+    (threshold tuned to optimize classification error rate), and the 
+    number of words in each quartile.
+
+2-nbNgFeats             ( 18 )               404 - 421
+  - The same for 2-grams
+
+3-nbNgFeats             ( 18 )               422 - 439
+  - The same for 3-grams
+
+4-nbNgFeats             ( 18 )               440 - 457
+  - The same for 4-grams
+
+nbestFeats              ( 18 )               458 - 475
+  - Average translation length
+  - Ratio between vocabulary size and average translation length
+  - Ratio between vocabulary and number of translation in the n-best list
+  - log-probability, log-probability / translation length, and perplexity
+    given language models of order 1 to 5 computed on the n-bests
+
+dictOpts                 ( 5 )               476 - 480
+  - Average number of translations per word and number of 
+    words in each quartile
+
+baseline                ( 17 )               481 - 497
+  - Baseline features

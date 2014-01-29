@@ -1,0 +1,10 @@
+UPC:
+- new training and test feature sets: the feature upc-48 is supposed to be one of the baseline features, but it actually contains the scores to predict as in target_system.likert 
+
+PRHLT:
+- new training and test feature sets: the decimal part of the features was missing so many feature values were zero
+
+
+
+
+

@@ -1,0 +1,100 @@
+WMT12 TCD Features set: short explanation
+-----------------------------------------
+Erwan Moreau, June 2012
+
+
+- names of features follow the pattern
+
+[tgt|src]-<name>-w[!]<N>-[sgl|goog].<specific parameters>
+
+where
+
+- [tgt|src] whether the measure was computed using the target (tgt) or
+  source (src) side of the sentence (against the reference data in the
+  same language of course)
+
+- <name> name of the similarity measure used (see details in the
+  paper).
+
+- [!] means taking punctuation into account
+
+- N is the size of N-grams.  
+  The MultiLevelMatching measure can take several n-grams sizes
+  into account, e.g. w1,2,3,4,5. It can also take skip-grams into
+  account, e.g. w1,2,YNY (means unigrams + bigrams + bigrams
+  skipping exactly one word)
+  
+
+- [sgl|goog] whether the reference data was the training data
+  (Europarl corpus) (sgl) or the Google NGrams (goog)
+
+- <specific parameters> shows values of various parameters which are
+  specific to this measure. This part does not follow any general
+  pattern; below is a non exhaustive list of a few common
+  abbreviations: 
+  - [lc0|lc1] lowercased (1) or not (0)
+  - frontiers using special tokens to mark begining/ending of the
+    sentence (see paper)
+  - [exists|freq|logFreq|..] 
+    - exists = only check that the ngram exists in the reference 
+      data (binary)
+    - freq = use the frequency as local score
+    - logFreq = use log(freq)
+    ...
+  - [match|book] for Google NGrams = use the global frequency or
+    the book frequency as local score.
+
+
+
+for more details please refer to the paper "Quality Estimation: an
+experimental study using unsupervised similarity measures" (WMT12)
+or contact the author.
+
+
+Actual list of features (43):
+
+src/MultiLevelMatching-w!1,2,3,4,5-goog.match-totalSelected1-exists
+src/MultiLevelMatching-w!1,2,3,4,5-goog.match-totalSelected1-invLogFreq
+src/MultiLevelMatching-w1,2,3,4,5-sgl.tokenizNoPunc-lc1-frontiers-exists
+src/MultiLevelMatching-w!1,2,3,4,5-sgl.tokenizPunc-lc1-frontiers-exists
+src/MultiLevelMatching-w!1,2,3-goog.match-totalSelected0-logFreq
+src/MultiLevelMatching-w!1,2,3-goog.match-totalSelected1-exists
+src/MultiLevelMatching-w!1,2,3-goog.match-totalSelected1-invLogFreq
+src/MultiLevelMatching-w!1,2,3-goog.match-totalSelected1-logFreq
+src/MultiLevelMatching-w!1,2,3-sgl.tokenizPunc-lc1-frontiers-logFreq
+src/MultiLevelMatching-w1,2,3-sgl.tokensFrontiers
+src/MultiLevelMatching-w!1,2-goog.match-totalSelected0-logFreq
+src/MultiLevelMatching-w!1,2-goog.match-totalSelected1-logFreq
+src/MultiLevelMatching-w1,2,YNY,3-sgl.tokensFrontiers
+src/Okapi-w2-sgl.tokenizNoPunc-lc0-frontiers
+src/Okapi-w2-sgl.tokenizNoPunc-lc1-frontiers
+src/Okapi-w!2-sgl.tokenizPunc-lc0-frontiers
+src/Okapi-w!2-sgl.tokenizPunc-lc1-frontiers
+src/Okapi-w3-sgl.tokenizNoPunc-lc0-frontiers
+src/Okapi-w3-sgl.tokenizNoPunc-lc1-frontiers
+src/Okapi-w!3-sgl.tokenizPunc-lc0-frontiers
+src/Okapi-w!3-sgl.tokenizPunc-lc1-frontiers
+src/Okapi-w!4-sgl.tokenizPunc-lc0-frontiers
+src/Okapi-w!4-sgl.tokenizPunc-lc1-frontiers
+src/Okapi-w5-sgl.tokenizNoPunc-lc1-frontiers
+src/Okapi-w!5-sgl.tokenizPunc-lc1-frontiers
+tgt/MultiLevelMatching-w!1,2,3,4,5-goog.match-totalSelected1-exists
+tgt/MultiLevelMatching-w!1,2,3,4,5-goog.match-totalSelected1-invLogFreq
+tgt/MultiLevelMatching-w1,2,3,4,5-sgl.tokenizNoPunc-lc1-frontiers-exists
+tgt/MultiLevelMatching-w!1,2,3,4,5-sgl.tokenizPunc-lc1-frontiers-exists
+tgt/MultiLevelMatching-w!1,2,3-goog.match-totalSelected1-exists
+tgt/MultiLevelMatching-w!1,2,3-goog.match-totalSelected1-invLogFreq
+tgt/MultiLevelMatching-w!1,2,3-sgl.tokenizPunc-lc1-frontiers-logFreq
+tgt/MultiLevelMatching-w1,2,3-sgl.tokensFrontiers
+tgt/MultiLevelMatching-w1,2,YNY,3-sgl.tokensFrontiers
+tgt/Okapi-w2-sgl.tokenizNoPunc-lc0-frontiers
+tgt/Okapi-w2-sgl.tokenizNoPunc-lc1-frontiers
+tgt/Okapi-w!2-sgl.tokenizPunc-lc0-frontiers
+tgt/Okapi-w!2-sgl.tokenizPunc-lc1-frontiers
+tgt/Okapi-w3-sgl.tokenizNoPunc-lc0-frontiers
+tgt/Okapi-w3-sgl.tokenizNoPunc-lc1-frontiers
+tgt/Okapi-w!3-sgl.tokenizPunc-lc0-frontiers
+tgt/Okapi-w!3-sgl.tokenizPunc-lc1-frontiers
+tgt/Okapi-w4-sgl.tokenizNoPunc-lc0-frontiers
+
+

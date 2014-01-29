@@ -1,0 +1,32 @@
+This file contains the feature sets from all (but 1) systems that participated in WMT-12 QE shared task.
+
+For each system, a folder identified by team name (acronym of institution, followed by first author's name, when necessary) containing the following files is provided:
+
+- <team-name>.features.train.cvs
+- <team-name>.features.test.cvs
+- <team-name>.readme
+
+The 2 first files contain all features used for training (1,832 instances) and test (422 instances) in CVS format, where the first line contains a simple, sequencial feature ID. The third file contains some information about the features, or a simple ordered list of features. 
+
+To note:
+
+- there is some overlap between feature sets, in particular, most of them use the 17 baseline features
+- dfki-maja contains only features for the test set, as this method did not involve any training. Please contact Maja Popovic (maja.popovic@dfki.de) if you'd like to have features for the training set extracted too.
+- some feature sets contain "?" for instances where those feature values were not defined: dfki-eleftherios and upc 
+
+To refer to these feature sets as a whole, please cite the WMT-12 findings paper:
+
+@InProceedings{callisonburch-EtAl:2012:WMT,
+  author    = {Callison-Burch, Chris  and  Koehn, Philipp  and  Monz, Christof  and  Post, Matt  and  Soricut, Radu  and  Specia, Lucia},
+  title     = {Findings of the 2012 Workshop on Statistical Machine Translation},
+  booktitle = {Proceedings of the Seventh Workshop on Statistical Machine Translation},
+  month     = {June},
+  year      = {2012},
+  address   = {Montr{\'e}al, Canada},
+  publisher = {Association for Computational Linguistics},
+  pages     = {10--51},
+  url = {http://cs.jhu.edu/~ccb/publications/findings-of-the-wmt12-shared-tasks.pdf}
+} 
+
+To refer to any specific feature set, use the citations on Table 11 (page 20) of this paper. For more details about specific features/feature sets, please contact the authors directly. Authors' names and emails can be found on their papers at the WMT-12 workshop proceedings: http://aclweb.org/anthology-new/W/W12/W12-31.pdf 
+

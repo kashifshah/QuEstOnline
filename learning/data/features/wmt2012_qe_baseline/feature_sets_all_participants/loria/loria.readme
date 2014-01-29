@@ -1,0 +1,115 @@
+This README describes the 49 features used for the QE LORIA system submitted to WMT12
+
+We used also the 17 baseline features, but we do not describe them into this README. 
+
+In the following, we propose the user to report to the paper:
+
+MT11: 
+@article{,
+    title = {{"This sentence is wrong." Detecting errors in machine-translated sentences.}},
+    author = {Raybaud, Sylvain and Langlois, David and Sma{\"\i}li, Kamel},
+    pages = {p. 1--34},
+    journal = {Machine Translation},
+    volume = {25},
+    number = {1 },
+    year = {2011},
+    month = Aug,
+}
+
+Explanation about "LM trained left to rigth" and "LM trained right to left":
+corpora are provided from "left to right" : <s> our paper is accepted </s> <s> I have now to register </s>
+we can train a language model on this corpus
+But we can rewrite the corpus from right to left :  </s> accepted is paper our <s> </s> register to now have I <s>
+and train another model 
+
+Spanish side. LM trained from left to right
+===========================================
+# 1: local backoff behavior. See MT11, formula 23 
+# 2: averaged backoff behavior on left window of width 3. See MT11, section 6.1.3
+# 3: averaged backoff behavior on centered window of width 3. See MT11, section 6.1.3
+# 4: averaged backoff behavior on right window of width 3. See MT11, section 6.1.3
+# 5: lowest backoff score among right window average, centred window average and left window average (width 3). Lowest across three previous values
+Spanish side. LM trained from right to left
+===========================================
+# 6-10 same as 1-5 but with LM trained from right to left
+# 6: local backoff behavior - backward
+# 7: averaged backoff behavior on left window of width 3 - backward
+# 8: averaged backoff behavior on centered window of width 3 - backward
+# 9: averaged backoff behavior on right window of width 3 - backward
+# 10: lowest backoff score among right window average, centred window average and left window average (width 3) - backward
+English side. LM trained from left to right
+===========================================
+# 11-15 same as 1-6 but for English
+# 11: local backoff behavior
+# 12: averaged backoff behavior on left window of width 3
+# 13: averaged backoff behavior on centered window of width 3
+# 14: averaged backoff behavior on right window of width 3
+# 15: lowest backoff score among right window average, centred window average and left window average (width 3)
+English side. LM trained from right to left
+===========================================
+# 16-20 same as 6-10 but for English
+# 16: local backoff behavior - backward
+# 17: averaged backoff behavior on left window of width 3 - backward
+# 18: averaged backoff behavior on centered window of width 3 - backward
+# 19: averaged backoff behavior on right window of width 3 - backward
+# 20: lowest backoff score among right window average, centred window average and left window average (width 3) - backward
+English/Spanish sides
+=====================
+# 21: average cross-lingual mutual information. See MT11 section 6.1.5 and formula 35, section 7.1.2
+Spanish side. LM trained from right to left
+===========================================
+# 22: 5-gram score - sentence level score obtained by averaging across all words in sentence 
+# 23: averaged 5-gram score on left window of width 3 - for each word wi, score is averaging scores between wi-2, wi-1, wi
+# 24: averaged 5-gram score on centered window of width 3 - for each word wi, score is averaging scores between wi-1, wi, wi+1
+# 25: averaged 5-gram score on right window of width 3 - for each word wi, score is averaging scores between wi, wi+1, wi+2
+English side. LM trained from right to left
+===========================================
+# 26-29 same as 22-25 but for English
+# 26: 5-gram score
+# 27: averaged 5-gram score on left window of width 3
+# 28: averaged 5-gram score on centered window of width 3
+# 29: averaged 5-gram score on right window of width 3
+English/Spanish sides
+=====================
+# 30: direct ibm1 translation score p(t|s). See MT11 sections 6.1.6, formula 28 and section 7.1.3, formula 36
+# 31: indirect ibm1 translation score p(s|t)
+Spanish side. LM trained from left to right
+===========================================
+# 32-35 same as 22-25 but LM are trained from left to right
+# 32: 5-gram score
+# 33: averaged 5-gram score on left window of width 3
+# 34: averaged 5-gram score on centered window of width 3
+# 35: averaged 5-gram score on right window of width 3
+English side. LM trained from left to right
+===========================================
+# 36-39 same as 26-29 but LM are trained from left to right
+# 36: 5-gram score
+# 37: averaged 5-gram score on left window of width 3
+# 38: averaged 5-gram score on centered window of width 3
+# 39: averaged 5-gram score on right window of width 3
+Spanish side
+============
+# 40: average intra-lingual mutual information. See MT11, section 6.1.4, formula 26 and section 7.1.2, formula 34
+English side
+============
+# 41: source sentence length
+Spanish side
+============
+# 42: candidate length
+English/Spanish sides
+=====================
+# 43: ratio beetwen 41 and 42
+Spanish side
+============
+# 44: bracketing is correct. Is there a ) for each ( ? a ] for each [ ? a } for each {. Are there correctly placed (no [{]})?
+English/Spanish side
+====================
+# 45: end-of-sentence punctuation is correct. is the last word in '.',':','"',"'",'!','?',';',')'?
+Spanish side
+============
+# 46: number of OOV words in sentence
+# 47: ratio of OOV words over sentence length
+English side
+============
+# 48: number of OOV words in sentence
+# 49: ratio of OOV words over sentence length

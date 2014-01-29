@@ -1,0 +1,18 @@
+***** Contents of the WMT-2012 Quality Estimation test_set_annotations release ***** 
+
+--README: this file
+
+--target_system.effort: weighted-average of [1-5] scores assigned by 3 humans to translations. Scores' distribution: 
+[1-2):  4%
+[2-3): 32%
+[3-4): 35%
+[4-5): 20%
+[5-5]: 10%
+
+--target_system.effort3scores: the individual scores assigned by 3 humans to translations
+
+--target_system.effort3weights: the weights used in conjunction with individual scores to obtained the weighted-average scores
+ 
+--target_postedited.spa: human post-edited version (Spanish) of the machine translations in target_system.spa
+
+--target_reference.spa: reference translation (Spanish) for source sentences as produced by WMT for the shared translation task

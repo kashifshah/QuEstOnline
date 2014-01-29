@@ -1,0 +1,101 @@
+= Features of the Edinburgh System for the WMT 12 QE shared task =
+
+[1] Black Box Features for the WMT 2012 Quality Estimation Shared Task
+http://www.mt-archive.info/WMT-2012-Buck.pdf
+
+For questions please refer to Christian Buck (cbuck@lantis.de)
+
+== Backoff Behaviour ==
+as described in [1] section 3.4 for different values of n
+
+backoff.europarl-nc.en.n5.kn.i.unk.en.lm.max2.avg
+backoff.europarl-nc.en.n5.kn.i.unk.en.lm.max3.avg
+backoff.europarl-nc.en.n5.kn.i.unk.en.lm.max4.avg
+backoff.europarl-nc.en.n5.kn.i.unk.en.lm.max5.avg
+backoff.europarl-nc.es.n5.kn.i.unk.en.lm.max2.avg
+backoff.europarl-nc.es.n5.kn.i.unk.en.lm.max3.avg
+backoff.europarl-nc.es.n5.kn.i.unk.en.lm.max4.avg 
+backoff.europarl-nc.es.n5.kn.i.unk.en.lm.max5.avg 
+
+== Discriminative Lexicon Model ==
+as described in [1] section 3.4
+
+dwl.source.probs.gavg
+dwl.source.probs.min 
+
+== Edit distance ==
+lev = word based edit distance, slev = character based edit distance
+*min_row* as described in [1] section 3.6
+In addition sum_row  gives (normalized) average distance to all the sentence in the MT training corpus. 
+These features did not work well in CV and are only given for reference.
+
+edit_distance.source.fixed_quotes.lev.min_row.norm 
+edit_distance.source.fixed_quotes.lev.sum_row.norm.norm 
+edit_distance.source.fixed_quotes.slev.min_row.norm 
+edit_distance.source.fixed_quotes.slev.sum_row.norm.norm 
+edit_distance.target.fixed_quotes.lev.min.norm 
+edit_distance.target.fixed_quotes.lev.sum.norm.norm 
+edit_distance.target.fixed_quotes.slev.min_row.norm 
+edit_distance.target.fixed_quotes.slev.sum_row.norm.norm 
+
+== Neural Network Features ==
+as described in [1] section 3.5
+for hashed_nn* the features have been hashed to reduce dimensionality.
+.errpos is referred to as prob+ in [1], .rmse is the distance to the desired output (dist in [1])
+
+hashed_nn.avg.errpos 
+hashed_nn.avg.rmse 
+
+== Indicators ==
+Features as described in [1] section 3.1
+.bin are binary indicators, otherwise features refer to counts / counts normalized by sentence length.
+
+indi.src.comma 
+indi.src.digits 
+indi.src.dot 
+indi.src.genitive 
+indi.src.minus 
+indi.src.minus.bin 
+indi.src.number.bin 
+indi.src.numbers 
+indi.src.quot 
+indi.src.singlequote 
+indi.src.upper 
+indi.src.upper.bin
+indi.tgt.comma 
+indi.tgt.digits 
+indi.tgt.dot 
+indi.tgt.genitive 
+indi.tgt.minus 
+indi.tgt.minus.bin 
+indi.tgt.number.bin 
+indi.tgt.numbers 
+indi.tgt.quot 
+indi.tgt.singlequote 
+indi.tgt.upper 
+indi.tgt.upper.bin 
+
+== Named Entity Features ==
+as described in [1] section 3.2
+.bin refers to binary indicators, .norm are counts normalized by sentence length
+
+ne.tags.location.bin 
+ne.tags.location.norm 
+ne.tags.misc.bin 
+ne.tags.misc.norm 
+ne.tags.no.bin 
+ne.tags.no.norm 
+ne.tags.organization.bin 
+ne.tags.organization.norm 
+ne.tags.person.bin 
+ne.tags.person.norm
+
+== Neural Network Features ==
+as described in [1] section 3.5
+for nn* words that don't occur in the train/test sections were removed from the Europarl corpus prior to training
+.errpos is referred to as prob+ in [1], .rmse is the distance to the desired output.
+
+nn.avg.errpos 
+nn.avg.rmse
+
+

@@ -1,0 +1,18 @@
+INFO:root:Opening input files ...
+INFO:root:Scaling datasets...
+INFO:root:Tuning hyper-parameters for mae
+[Parallel(n_jobs=1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done  24 out of  24 | elapsed:    2.6s finished
+INFO:root:Best parameters set found on development set:
+INFO:root:{'epsilon': 0.20000000000000001, 'C': 1.0, 'gamma': 0.0001, 'kernel': 'rbf'}
+INFO:root:Tuning hyper-parameters for rmse
+[Parallel(n_jobs=1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done  24 out of  24 | elapsed:    2.6s finished
+INFO:root:Best parameters set found on development set:
+INFO:root:{'epsilon': 0.20000000000000001, 'C': 1.0, 'gamma': 0.0001, 'kernel': 'rbf'}
+INFO:root:Running learning algorithm SVR(C=1.0, cache_size=200, coef0=0.0, degree=3, epsilon=0.2, gamma=0.0001,
+  kernel=rbf, probability=False, shrinking=True, tol=0.001, verbose=False)
+INFO:root:Predicting unseen data using the trained model...
+INFO:root:Evaluating prediction on the test set...
+INFO:root:mae = 0.750907766192
+INFO:root:rmse = 0.898140883786

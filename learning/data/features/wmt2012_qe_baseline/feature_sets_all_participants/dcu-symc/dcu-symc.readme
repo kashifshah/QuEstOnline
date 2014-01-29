@@ -1,0 +1,48 @@
+DCU-Symantec feature set
+
+Number of features: 308
+Files:
+	features.train.csv
+	features.test.csv
+
+Each line in these files corresponds to a feature vector, each component of the vector is a feature value, the values are separated by a coma. The features order is described below.
+The feature values are not scaled.
+
+#	Description
+
+1	Ratio between source and target segment lengths
+2	Ratio between source and target punctuation marks
+3	Number of phrases that compose the target segment
+4	Average length of source phrases
+5	Average length of target phrases
+6	Ratio between source and target average length
+7	Log prob of source segment on a backward 2-gram LM
+8	Log prob of source segment on a backward 3-gram LM
+9	Log prob of target segment on a backward 2-gram LM
+10      Log prob of target segment on a backward 3-gram LM
+11-25	Moses scores (unweighted, weighted) given by the "trace" option during decoding
+26-85	Source syntax features based on three output of probabilistic parsers
+86-109	Source syntax features based on binarised POS n-grams
+110-125	Source syntax features based on POS n-grams
+126-131 Source syntax features based on XLE parser engine using an English LFG
+132-162 Source syntax features based on binarised LFG
+163	Log prob of target segment on a MT output based 5-gram LM
+164	Number of prepositions in the source segment
+165	Log prob of target segment on a POS 5-gram LM
+166	Number of n-best
+167-176	Source segment distribution over topics on a LDA 10 dimensions topic model
+177-186	Target segment distribution over topics on a LDA 10 dimensions topic model
+187	Cosine distance between the source and target topic vectors
+188	Number of out-of-vocabulary words
+189	TER score of back-translated target segment using Bing
+190	BLEU score of back-translated target segment using Bing
+191	Levenshtein distance of back-translated target segment using Bing
+192     TER score of back-translated target segment using Moses
+193     BLEU score of back-translated target segment using Moses
+194     Levenshtein distance of back-translated target segment using Moses
+195-262	Target syntax features based on relative frequency of a POS tag in the segment
+263-268	Target syntax features based on POS n-grams
+269-289	Target syntax features based on binarised POS n-grams
+290	Number of source grammar errors given by LanguageTool
+291	Number of target grammar errors given by LanguageTool
+292-308	Baseline features in the same order they are extracted using the tool provided for the shared task

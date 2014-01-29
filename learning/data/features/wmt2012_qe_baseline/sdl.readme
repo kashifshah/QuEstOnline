@@ -1,0 +1,18 @@
+The 15 feature-function values provided by SDL-LW are as follows:
+
+1. number of tokens in the (tokenized) source sentence
+2. number of out-of-vocabulary tokens in the source sentence
+3. geometric mean (lambda-smoothed) of 1-to-4--gram precision scores of target translation against a pseudo-reference produced by a second MT Eng-Spa system 
+4. average source token length
+5. LM probability of source sentence
+6. average number of occurrences of the target word within the target translation
+7. percentage of bigrams in quartile 4 (higher frequency words) of frequency of source words in source MT-training data 
+8. percentage of trigrams in quartile 1 (lower frequency words) of frequency of source words in source MT-training data 
+9. percentage of trigrams in quartile 4 (higher frequency words) of frequency of source words in source MT-training data
+10. LM cost of output string
+11. cost of the phrase-probability of source given target \phi(s|t)
+12. cost of the phrase-probability of target given source \phi(t|s)
+13. count of O2O alignments with Part-of-Speech
+14. ratio of O2O alignments with Part-of-Speech
+15. ratio of O2O alignments with Part-of-Speech--agreement over source
+

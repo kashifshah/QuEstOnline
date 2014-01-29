@@ -1,0 +1,12 @@
+Feature sets for 2,525 French-English (fr-en) translations with alternative labels for post-editing effort:
+
+-- features: complete feature set (81 features, some 0 columns, includes the 17 baseline features)
+-- score_effort: human scores in {1,2,3,4}
+-- score_time_norm: average number of seconds to post-edit each word in the sentence
+-- score_time: number of seconds to post-edit the sentence
+-- score_hter: TER between MT and its post-edited version
+-- results: average RMSE reported on 5 splits of the dataset
+-- splits/random_indexes_for_test.x: 5 of these with indexes for *test* instances (starting from 1)
+
+
+

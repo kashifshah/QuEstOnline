@@ -1,4 +1,4 @@
-Online-QuEst:
+### Online-QuEst ###
 
 The Online-QuEst is an extension of QuEst open source software  aimed at quality estimation (QE) for machine translation on the fly. 
 The original code is changed by adapting / adding number of classes to load the models in memory before extracting features.  
@@ -46,7 +46,7 @@ compile-lm train.lm tran.blm
 
 
 
-e.g commands:
+### e.g commands: ###
 
 
 perl myFaucet.pl -d 9111 java -Xmx1g -XX:+UseConcMarkSweepGC -classpath build/classes:lib/commons-cli-1.2.jar:lib/stanford-postagger.jar:lib/BerkeleyParser-1.7.jar:lib/log4j-1.2.17.jar updatedQuEst.UpdatedQuEstMain  config/config_en-es.properties_corr /Users/kashif/Documents/projects/QuestOnline/output false false

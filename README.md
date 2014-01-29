@@ -49,7 +49,7 @@ compile-lm train.lm tran.blm
 ### e.g commands: ###
 
 
-perl myFaucet.pl -d 9111 java -Xmx1g -XX:+UseConcMarkSweepGC -classpath build/classes:lib/commons-cli-1.2.jar:lib/stanford-postagger.jar:lib/BerkeleyParser-1.7.jar:lib/log4j-1.2.17.jar updatedQuEst.UpdatedQuEstMain  config/config_en-es.properties_corr /Users/kashif/Documents/projects/QuestOnline/output false false
+perl myFaucet.pl -d 9111 java -Xmx1g -XX:+UseConcMarkSweepGC -classpath build/classes:lib/* updatedQuEst.UpdatedQuEstMain  config/config_en-es.properties_corr /Users/kashif/Documents/projects/QuestOnline/output false false
 
 last three arguments are ‘output-folder’ debug<true/false> already-tokenize<true/false>  
 
